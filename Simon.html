@@ -22,6 +22,7 @@
     }
 
     function startNewGame() {
+        $(".userColors").attr("disabled",false);
         generatedColorArr = new Array();
         userColors = new Array();
         pushGenColor();
@@ -78,10 +79,10 @@
 
 <body>
     <button onclick="startNewGame()">Start New Game</button><br>
-    <button id="red" onclick="pushUserColor(1)">red</button>
-    <button id="green" onclick="pushUserColor(2)">green</button>
-    <button id="yellow" onclick="pushUserColor(3)">yellow</button>
-    <button id="blue" onclick="pushUserColor(4)">blue</button><br>
+    <button disabled id="red" class="userColors" onclick="pushUserColor(1)">red</button>
+    <button disabled id="green" class="userColors" onclick="pushUserColor(2)">green</button>
+    <button disabled id="yellow" class="userColors" onclick="pushUserColor(3)">yellow</button>
+    <button disabled id="blue" class="userColors" onclick="pushUserColor(4)">blue</button><br>
 </body>
 
 </html>
