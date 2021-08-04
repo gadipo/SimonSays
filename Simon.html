@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Exercise</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<script>
+    var baseColors = new Array("red", "green", "yellow", "blue");
+    console.log(baseColors);
+    var generatedColorArr = new Array();
+    var userColors = new Array();
+    var userPushes = 0;
+
+    function colorRnd() {
+        let random = baseColors[Math.floor(Math.random() * 4)];
+        return random;
+    }
+
+    function startNewGame() {
+        generatedColorArr = new Array();
+        userColors = new Array();
+        pushGenColor();
+    }
+    function pushGenColor() {
+        generatedColorArr.push(colorRnd());
+        alert("Generated Array : " + generatedColorArr);
+        console.log("Generated Array : " + generatedColorArr);
+    }
+
+    function pushUserColor(x) {
+        switch (x) {
+            case 1:
+                userColors.push("red");
+                compareArrs();
+                break;
+            case 2:
+                userColors.push("green");
+                compareArrs();
+                break;
+            case 3:
+                userColors.push("yellow");
+                compareArrs();
+                break;
+            case 4:
+                userColors.push("blue");
+                compareArrs();
+                break;
+
+            default: return;
+                break;
+        }
+    }
+
+    function compareArrs() {
+        if (userColors[userPushes] != generatedColorArr[userPushes]) {
+            alert("Wrong! try again...");
+            alert("Generated Array : " + generatedColorArr);
+            userColors = new Array();
+            userPushes = 0;
+            return;
+        }
+        userPushes++;
+        if (userPushes == generatedColorArr.length) {
+            alert("Success !");
+            pushGenColor();
+            userColors = new Array();
+            userPushes = 0;
+        }
+    }
+
+
+</script>
+
+<body>
+    <button onclick="startNewGame()">Start New Game</button><br>
+    <button id="red" onclick="pushUserColor(1)">red</button>
+    <button id="green" onclick="pushUserColor(2)">green</button>
+    <button id="yellow" onclick="pushUserColor(3)">yellow</button>
+    <button id="blue" onclick="pushUserColor(4)">blue</button><br>
+</body>
+
+</html>
